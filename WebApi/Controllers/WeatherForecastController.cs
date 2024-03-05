@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -28,6 +29,15 @@ namespace WebApi.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+
+        [HttpGet]
+        [Route("info")]
+        [Authorize]
+        public IActionResult Info()
+        {
+            return Ok("user info");
         }
     }
 }
